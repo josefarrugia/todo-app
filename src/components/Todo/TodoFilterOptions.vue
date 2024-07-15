@@ -25,13 +25,13 @@ const handleFilter = (option: string) => {
 </script>
 
 <template>
-  <section class="py-4">
-    <h3 class="font-bold text-xl mb-2">Filter by:</h3>
+  <section class="flex flex-col gap-2 lg:items-center">
+    <h3 class="font-bold text-lg">Filter by:</h3>
     <div class="flex gap-2">
       <ButtonPrimary
         v-for="option in filterOptions"
         :key="option"
-        class="capitalize min-w-28"
+        class="capitalize min-w-16 lg:min-w-28"
         :class="{ 'bg-green-500 text-white': filterBy === option }"
         @click="handleFilter(option)"
         >{{ option }}</ButtonPrimary
