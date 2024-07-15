@@ -1,27 +1,33 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FormCheckbox from '../Form/FormCheckbox.vue';
 
-const initialProps = {
-  id: 'form-checkbox-99',
-  name: 'form-checkbox-99',
-  label: 'Test FormCheckbox',
-  inputCheckbox: false
-};
+let wrapper;
+
+beforeEach(() => {
+  wrapper = mount(FormCheckbox, {
+    props: {
+      id: 'form-checkbox-99',
+      name: 'form-checkbox-99',
+      label: 'Test FormCheckbox',
+      inputCheckbox: false,
+      'onUpdate:inputCheckbox': (e: boolean) => wrapper.setProps({ inputCheckbox: e })
+    },
+    attachTo: document.body
+  });
+});
+
+const findCheckbox = () => wrapper.find('input[type="checkbox"]');
 
 describe('FormCheckbox Component', () => {
   it('renders properly', () => {
-    const wrapper = mount(FormCheckbox, {
-      props: initialProps
-    });
-
     expect(wrapper.exists());
 
     // Assert label for attribute
     expect(wrapper.attributes('for')).equals('form-checkbox-99');
 
     // Find Checkbox
-    const checkbox = wrapper.find('input[type="checkbox"]');
+    const checkbox = findCheckbox();
     expect(checkbox.exists()).toBe(true);
 
     // Assert initial attributes
@@ -37,14 +43,7 @@ describe('FormCheckbox Component', () => {
   });
 
   it('inputCheckbox should be updated', async () => {
-    const wrapper = mount(FormCheckbox, {
-      props: {
-        ...initialProps,
-        'onUpdate:inputCheckbox': (e: boolean) => wrapper.setProps({ inputCheckbox: e })
-      }
-    });
-
-    const checkbox = wrapper.find('input[type="checkbox"]');
+    const checkbox = findCheckbox();
     await checkbox.setValue(true);
 
     expect(checkbox.element.checked).toBe(true);
@@ -52,15 +51,7 @@ describe('FormCheckbox Component', () => {
   });
 
   it('trigger click on checkbox', async () => {
-    const wrapper = mount(FormCheckbox, {
-      props: {
-        ...initialProps,
-        'onUpdate:inputCheckbox': (e: boolean) => wrapper.setProps({ inputCheckbox: e })
-      },
-      attachTo: document.body
-    });
-
-    const checkbox = wrapper.find('input[type="checkbox"]');
+    const checkbox = findCheckbox();
 
     await checkbox.trigger('click');
 
