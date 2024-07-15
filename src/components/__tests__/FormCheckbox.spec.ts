@@ -50,4 +50,21 @@ describe('FormCheckbox Component', () => {
     expect(checkbox.element.checked).toBe(true);
     expect(wrapper.props('inputCheckbox')).toBe(true);
   });
+
+  it('trigger click on checkbox', async () => {
+    const wrapper = mount(FormCheckbox, {
+      props: {
+        ...initialProps,
+        'onUpdate:inputCheckbox': (e: boolean) => wrapper.setProps({ inputCheckbox: e })
+      },
+      attachTo: document.body
+    });
+
+    const checkbox = wrapper.find('input[type="checkbox"]');
+
+    await checkbox.trigger('click');
+
+    expect(checkbox.element.checked).toBe(true);
+    expect(wrapper.props('inputCheckbox')).toBe(true);
+  });
 });
