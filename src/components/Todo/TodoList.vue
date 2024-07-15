@@ -34,7 +34,13 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <TodoFilterOptions @change="handleFilterOptions" />
+  <div class="flex gap-2 justify-between items-end mb-4">
+    <TodoFilterOptions @change="handleFilterOptions" />
+    <div class="text-blue-500 text-right">
+      <h3>Total</h3>
+      <h4 class="text-2xl font-mono">{{ filteredItems.length }}</h4>
+    </div>
+  </div>
   <ul class="flex flex-col gap-4">
     <TodoItem
       v-for="item in filteredItems"
