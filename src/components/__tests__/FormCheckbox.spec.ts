@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { mount, VueWrapper } from '@vue/test-utils';
 import FormCheckbox from '../Form/FormCheckbox.vue';
 
-let wrapper;
+let wrapper: VueWrapper<any>;
 
 beforeEach(() => {
   wrapper = mount(FormCheckbox, {

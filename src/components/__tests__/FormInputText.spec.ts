@@ -1,27 +1,31 @@
-import { describe, it, expect } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { mount, VueWrapper } from '@vue/test-utils';
 import FormInputText from '../Form/FormInputText.vue';
 
-const initialProps = {
-  id: 'form-input-text-99',
-  name: 'form-input-text-99',
-  label: 'Test FormInputText',
-  inputValue: 'initial text'
-};
+let wrapper: VueWrapper<any>;
+beforeEach(() => {
+  wrapper = mount(FormInputText, {
+    props: {
+      id: 'form-input-text-99',
+      name: 'form-input-text-99',
+      label: 'Test FormInputText',
+      inputValue: 'initial text',
+      'onUpdate:inputValue': (e: string) => wrapper.setProps({ inputValue: e })
+    }
+  });
+});
+
+const findInputTextField = () => wrapper.find('input[type="text"]');
 
 describe('FormInputText Component', () => {
   it('renders properly', () => {
-    const wrapper = mount(FormInputText, {
-      props: initialProps
-    });
-
     expect(wrapper.exists());
 
     // Assert label for attribute
     expect(wrapper.attributes('for')).equals('form-input-text-99');
 
     // Find Input
-    const input = wrapper.find('input[type="text"]');
+    const input = findInputTextField();
     expect(input.exists()).toBe(true);
 
     // Assert initial attributes
@@ -37,14 +41,9 @@ describe('FormInputText Component', () => {
   });
 
   it('inputCheckbox should be updated', async () => {
-    const wrapper = mount(FormInputText, {
-      props: {
-        ...initialProps,
-        'onUpdate:inputValue': (e: string) => wrapper.setProps({ inputValue: e })
-      }
-    });
+    expect(wrapper.exists());
 
-    const input = wrapper.find('input[type="text"]');
+    const input = findInputTextField();
     await input.setValue('this is the updated value');
 
     expect((input.element as HTMLInputElement).value).equals('this is the updated value');
