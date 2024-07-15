@@ -40,7 +40,7 @@ describe('FormCheckbox Component', () => {
     const wrapper = mount(FormCheckbox, {
       props: {
         ...initialProps,
-        'onUpdate:inputCheckbox': (e) => wrapper.setProps({ inputCheckbox: e })
+        'onUpdate:inputCheckbox': (e: boolean) => wrapper.setProps({ inputCheckbox: e })
       }
     });
 
