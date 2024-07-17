@@ -20,6 +20,17 @@ You can select the text in the task and edit the task. You can update it by pres
 
 You can delete a task by clicking the rubbish bin icon on the right hand side of the task.
 
+
+### Caveat Notes:
+
+1. Can not delete user added tasks due to limitation of DummyJSON
+2. Newly user added tasks will get the same ID
+
+### Future Updates
+
+- [ ] Add animation effects
+- [ ] Add Pinia Persist Storage
+
 ## Setup
 
 ```sh
