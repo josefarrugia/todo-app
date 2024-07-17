@@ -45,7 +45,7 @@ export const useTaskStore = defineStore('tasks', {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             todo: todo,
-            userId: Math.floor(Math.random() * 100) // randomly generate userID so that API would accept request
+            userId: 5 // dummy userID
           })
         });
 
@@ -56,9 +56,11 @@ export const useTaskStore = defineStore('tasks', {
         }
 
         const json = await response.json();
-        console.log(json);
-        this.items.unshift(json);
-        storeToast.showToast('Task has been added');
+
+        if (json) {
+          this.items.unshift(json);
+          storeToast.showToast('Task has been added');
+        }
       } catch (error: any) {
         storeToast.showToast(error.message);
         console.error(error.message);
@@ -86,8 +88,7 @@ export const useTaskStore = defineStore('tasks', {
 
         const json = await response.json();
 
-        console.log(json);
-        storeToast.showToast('Task has been updated');
+        if (json) storeToast.showToast('Task has been updated');
       } catch (error: any) {
         storeToast.showToast(error.message);
         console.error(error.message);
@@ -109,7 +110,7 @@ export const useTaskStore = defineStore('tasks', {
         }
 
         const json = await response.json();
-        console.log(json);
+
         const { isDeleted } = json;
 
         if (isDeleted) {
