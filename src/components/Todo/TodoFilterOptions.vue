@@ -25,7 +25,7 @@ const handleFilter = (option: string) => {
 </script>
 
 <template>
-  <section class="flex flex-col gap-2 lg:items-center">
+  <section class="flex flex-col gap-2">
     <h3 class="font-bold text-lg">Filter by:</h3>
     <div class="flex gap-2">
       <ButtonPrimary
