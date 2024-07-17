@@ -30,6 +30,7 @@ You can delete a task by clicking the rubbish bin icon on the right hand side of
 
 - [ ] Add animation effects
 - [ ] Add Pinia Persist Storage
+- [ ] Update Toast Notification component with different colours
 
 ## Setup
 
