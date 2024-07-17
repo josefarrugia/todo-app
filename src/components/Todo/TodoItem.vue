@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useTaskStore } from '@/stores/tasks';
 import ButtonSecondary from '@/components/Button/ButtonSecondary.vue';
-import { TrashIcon } from '@heroicons/vue/24/outline';
+import { TrashIcon, PencilIcon } from '@heroicons/vue/24/outline';
 import FormCheckbox from '@/components/Form/FormCheckbox.vue';
 import FormInputText from '@/components/Form/FormInputText.vue';
 import { watch } from 'vue';
@@ -64,10 +64,13 @@ watch(completed, async () => {
       </div>
 
       <div
-        class="lg:absolute lg:-right-11 lg:h-full flex items-center transition-all lg:opacity-0 group-hover:lg:opacity-100"
+        class="lg:absolute lg:-right-20 lg:h-full flex items-center transition-all lg:opacity-0 group-hover:lg:opacity-100"
       >
         <div class="flex gap-2">
-          <ButtonSecondary @click="handleDeleteTask">
+          <ButtonSecondary data-testid="button-edit" @click="handleUpdateTask">
+            <PencilIcon class="w-4 h-4" />
+          </ButtonSecondary>
+          <ButtonSecondary data-testid="button-delete" @click="handleDeleteTask">
             <TrashIcon class="w-4 h-4" />
           </ButtonSecondary>
         </div>
