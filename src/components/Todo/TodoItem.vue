@@ -13,7 +13,7 @@ interface TodoItemProps {
 
 const props = defineProps<TodoItemProps>();
 
-const todo = defineModel<string>('todo');
+const todo = defineModel<string>('todo', { default: '' });
 const completed = defineModel<boolean>('completed', { default: false });
 
 const taskStore = useTaskStore();
