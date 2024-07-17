@@ -75,10 +75,20 @@ describe('TodoItem Component', () => {
     expect(storeTask.updateTask).toHaveBeenCalledTimes(1);
   });
 
+  it('trigger button click to update task', async () => {
+    const storeTask = useTaskStore();
+
+    const button = wrapper.find('[data-testid="button-edit"]');
+
+    await button.trigger('click');
+
+    expect(storeTask.updateTask).toHaveBeenCalledTimes(1);
+  });
+
   it('trigger button click to delete task', async () => {
     const storeTask = useTaskStore();
 
-    const button = wrapper.findComponent(ButtonSecondary);
+    const button = wrapper.find('[data-testid="button-delete"]');
 
     await button.trigger('click');
 
