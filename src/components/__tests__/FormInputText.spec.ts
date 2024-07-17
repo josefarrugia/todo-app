@@ -19,7 +19,7 @@ const findInputTextField = () => wrapper.find('input[type="text"]');
 
 describe('FormInputText Component', () => {
   it('renders properly', () => {
-    expect(wrapper.exists());
+    expect(wrapper.exists()).toBe(true);
 
     // Assert label for attribute
     expect(wrapper.attributes('for')).equals('form-input-text-99');
@@ -41,7 +41,7 @@ describe('FormInputText Component', () => {
   });
 
   it('inputCheckbox should be updated', async () => {
-    expect(wrapper.exists());
+    expect(wrapper.exists()).toBe(true);
 
     const input = findInputTextField();
     await input.setValue('this is the updated value');

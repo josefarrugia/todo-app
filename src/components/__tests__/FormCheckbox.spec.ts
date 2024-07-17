@@ -21,7 +21,7 @@ const findCheckbox = () => wrapper.find('input[type="checkbox"]');
 
 describe('FormCheckbox Component', () => {
   it('renders properly', () => {
-    expect(wrapper.exists());
+    expect(wrapper.exists()).toBe(true);
 
     // Assert label for attribute
     expect(wrapper.attributes('for')).equals('form-checkbox-99');
