@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type { Task } from '@/types/task';
+import type { Task, TaskUpdate } from '@/types/task';
 import { useToastStore } from '@/stores/toast';
 
 const url: string = 'https://dummyjson.com/todos';
@@ -65,7 +65,7 @@ export const useTaskStore = defineStore('tasks', {
       }
     },
 
-    async updateTask(task, id: number): Promise<void> {
+    async updateTask(task: TaskUpdate, id: number): Promise<void> {
       const storeToast = useToastStore();
 
       try {
