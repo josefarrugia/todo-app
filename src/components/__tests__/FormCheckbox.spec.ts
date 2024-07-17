@@ -34,7 +34,7 @@ describe('FormCheckbox Component', () => {
     expect(checkbox.attributes('type')).equals('checkbox');
     expect(checkbox.attributes('id')).equals('form-checkbox-99');
     expect(checkbox.attributes('name')).equals('form-checkbox-99');
-    expect(checkbox.element.checked).toBe(false);
+    expect((checkbox.element as HTMLInputElement).checked).toBe(false);
 
     // Find span with label prop and assert initial prop
     const spanLabel = wrapper.find('span');
@@ -46,7 +46,7 @@ describe('FormCheckbox Component', () => {
     const checkbox = findCheckbox();
     await checkbox.setValue(true);
 
-    expect(checkbox.element.checked).toBe(true);
+    expect((checkbox.element as HTMLInputElement).checked).toBe(true);
     expect(wrapper.props('inputCheckbox')).toBe(true);
   });
 
@@ -55,7 +55,7 @@ describe('FormCheckbox Component', () => {
 
     await checkbox.trigger('click');
 
-    expect(checkbox.element.checked).toBe(true);
+    expect((checkbox.element as HTMLInputElement).checked).toBe(true);
     expect(wrapper.props('inputCheckbox')).toBe(true);
   });
 });
