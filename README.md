@@ -1,20 +1,26 @@
-# farrugia-jose-todo-app
+# Todo App
 
-This template should help get you started developing with Vue 3 in Vite.
+![Todo App Screenshot](./public/todo-app-screenshot.png)
 
-## Recommended IDE Setup
+This is a simple Todo list app created with Vue 3, Typescript, Pinia and TailwindCSS. You can add, update and delete tasks. Furthermore, you can filter by the task's status.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The initial set of tasks is being called from [DummyJSON](https://dummyjson.com/docs/todos).
 
-## Type Support for `.vue` Imports in TS
+## Usage
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Add a task
 
-## Customize configuration
+You can add a task by inputting some text in the "Add new task" module on top and clicking the plus icon.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Edit a task
 
-## Project Setup
+You can select the text in the task and edit the task. You can update it by pressing enter on the keyboard. Furthermore, you can update it manually by clicking on the pencil icon on the right hand side of the task.
+
+### Delete a task
+
+You can delete a task by clicking the rubbish bin icon on the right hand side of the task.
+
+## Setup
 
 ```sh
 npm install
