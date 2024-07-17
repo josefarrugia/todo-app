@@ -4,3 +4,8 @@ export interface Task {
   completed: boolean;
   userId: number;
 }
+
+export interface TaskUpdate {
+  todo: string;
+  completed: boolean;
+}
