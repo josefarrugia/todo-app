@@ -3,13 +3,19 @@ import { ref } from 'vue';
 import { useTaskStore } from '@/stores/tasks';
 import ButtonAdd from '@/components/Button/ButtonAdd.vue';
 import FormInputText from '@/components/Form/FormInputText.vue';
+import { useToastStore } from '@/stores/toast';
 
 const storeTask = useTaskStore();
+const storeToast = useToastStore();
 
 const todo = ref('');
 
 const handleAddTask = async () => {
-  await storeTask.addTask(todo.value);
+  if (todo.value.length > 3) {
+    await storeTask.addTask(todo.value);
+  } else {
+    storeToast.showToast('Please write a longer task description');
+  }
 
   todo.value = '';
 };
